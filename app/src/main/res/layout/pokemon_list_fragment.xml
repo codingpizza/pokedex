@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PokemonListFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pokemonList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/pokemon_list_item"
+        tools:itemCount="10"
+        tools:orientation="vertical"
+        tools:scrollbars="vertical"
+        tools:spanCount="3"/>
+
+</FrameLayout>
