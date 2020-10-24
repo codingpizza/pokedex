@@ -6,16 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.codingpizza.pokedex.R
 import com.codingpizza.pokedex.databinding.PokemonListFragmentBinding
-import com.codingpizza.pokedex.domain.model.PokemonItem
 
 class PokemonListFragment : Fragment() {
 
     private lateinit var viewModel: PokemonListViewModel
-    private var adapter: PokemonListAdapter? = null
+    private var adapter: PokemonListAdapter? = PokemonListAdapter()
     private var binding: PokemonListFragmentBinding? = null
 
     override fun onCreateView(
@@ -29,18 +27,15 @@ class PokemonListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(PokemonListViewModel::class.java)
+        viewModel.retrievePokemonList()
+        viewModel.pokemonLiveData.observe(viewLifecycleOwner, Observer { pokemonList ->
+            adapter?.submitList(pokemonList)
+        })
         initializeUI()
     }
 
     private fun initializeUI() {
         binding?.apply {
-            val list = listOf(PokemonItem("Pikachu"),
-                PokemonItem("Charmander"),
-                PokemonItem("Mew"),
-                PokemonItem("Jigglypuff"),
-                PokemonItem("Charizard")
-            )
-            adapter = PokemonListAdapter().also { pokemonListAdapter -> pokemonListAdapter.submitList(list) }
             pokemonList.layoutManager = LinearLayoutManager(context)
             pokemonList.adapter = adapter
         }
