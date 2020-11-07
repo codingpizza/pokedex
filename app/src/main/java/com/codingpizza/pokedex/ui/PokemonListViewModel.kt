@@ -9,7 +9,7 @@ import com.codingpizza.pokedex.domain.repository.PokemonRepository
 import kotlinx.coroutines.launch
 
 class PokemonListViewModel : ViewModel() {
-    //TODO cambiar a parametro
+
     private val repository : PokemonRepository = PokemonRepository()
 
     private val _pokemonLiveData = MutableLiveData<List<PokemonListItem>>()

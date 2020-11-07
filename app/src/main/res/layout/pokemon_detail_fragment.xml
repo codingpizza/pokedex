@@ -1,29 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.detail.PokemonDetailFragment">
+
+    <ImageView
+        android:id="@+id/pokemonImage"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ditto" />
 
     <TextView
         android:id="@+id/pokemonTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="@string/pokemon_detail_title" />
+        android:text="@string/pokemon_detail_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemonImage" />
 
-    <TextView
-        android:id="@+id/pokemonTitleValue"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/pokemonTypesChips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pokemonTitle"
+        app:layout_constraintStart_toStartOf="@id/pokemonTitle"
+        app:layout_constraintTop_toBottomOf="@id/pokemonTitle" />
+
+    <TextView
+        android:id="@+id/pokemonWeightTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        tools:text="Bulbasaur" />
+        android:layout_marginEnd="16dp"
+        android:text="@string/pokemon_weight_message"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemonImage" />
+
+    <TextView
+        android:id="@+id/pokemonWeightValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@id/pokemonWeightTitle"
+        app:layout_constraintStart_toStartOf="@id/pokemonWeightTitle"
+        app:layout_constraintTop_toBottomOf="@id/pokemonWeightTitle"
+        tools:text="32" />
+
+    <TextView
+        android:id="@+id/pokemonMovesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/pokemon_moves_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemonTypesChips" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/moveList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pokemonMovesTitle"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/pokemon_moves_item"
+        tools:itemCount="10"
+        tools:orientation="vertical"
+        tools:scrollbars="vertical"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

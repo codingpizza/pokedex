@@ -19,8 +19,6 @@ class PokemonListFragment : Fragment() {
     private lateinit var viewModel: PokemonListViewModel
 
     private var adapter: PokemonListAdapter? = PokemonListAdapter { pokemonName ->
-        Toast.makeText(context,"El pokemon seleccionado fue $pokemonName",Toast.LENGTH_SHORT)
-            .show()
         findNavController().navigate(PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment(pokemonName))
     }
 

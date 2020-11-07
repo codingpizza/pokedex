@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Pokedex</string>
     <string name="pokemon_detail_title">Nombre del Pokemon</string>
+    <string name="pokemon_weight_message">Weight:</string>
+    <string name="pokemon_moves_title">Movimientos</string>
 </resources>
