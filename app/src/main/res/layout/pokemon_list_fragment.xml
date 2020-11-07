@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DDD0D0"
     tools:context=".ui.PokemonListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,6 @@
         tools:listitem="@layout/pokemon_list_item"
         tools:itemCount="10"
         tools:orientation="vertical"
-        tools:scrollbars="vertical"
-        tools:spanCount="3"/>
+        tools:scrollbars="vertical" />
 
 </FrameLayout>

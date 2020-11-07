@@ -6,14 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.codingpizza.pokedex.R
 import com.codingpizza.pokedex.databinding.PokemonListFragmentBinding
 
 class PokemonListFragment : Fragment() {
 
     private lateinit var viewModel: PokemonListViewModel
-    private var adapter: PokemonListAdapter? = PokemonListAdapter()
+
+    private var adapter: PokemonListAdapter? = PokemonListAdapter { pokemonName ->
+        Toast.makeText(context,"El pokemon seleccionado fue $pokemonName",Toast.LENGTH_SHORT)
+            .show()
+        findNavController().navigate(PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment(pokemonName))
+    }
+
     private var binding: PokemonListFragmentBinding? = null
 
     override fun onCreateView(
